@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+html, body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.container {
+	height:100%;
+	border: 1px solid black;
+	padding:0;
+	width:20%;
+	 float:left;
+	 background-color:white;
+	
+}
+.container1 {
+	height:60%;
+
+	padding:100px;
+	margin:150px;
+	width:50%;
+	 float:left;
+	 background-color:	#fff5ee;
+}
+.nav felx-low {
+	flex-direction : low;
+}
+
+h3 {
+	text-align : center;
+	margin-bottom:30px;
+
+}
+.submitBtn {
+	padding:20px;
+}
+.searchInfo{
+	 display: flex;
+    align-items: center;
+    justify-content: center;
+}
