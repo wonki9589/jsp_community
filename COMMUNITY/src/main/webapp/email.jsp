@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <link rel="stylesheet" href="css/navbar.css">
 
-<title>코딩 커뮤니티 사이트</title>
+<title>계정 찾기(이메일)</title>
 </head>
 <body>
 
@@ -25,7 +25,6 @@
 			</button>
 			
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-
 				
 
 				<ul class="nav">
@@ -61,37 +60,28 @@
 
 
 	<div class="container1">
-	<h3> 로그인</h3>
+	<h3> 계정 찾기</h3>
 	<hr />
 	
-	
+		<h6 style="text-align : center; margin:40px;0px; 40px; 0px;">회원가입시 입력한 이메일 주소를 입력해주세요</h6>
 		<div class="input-group mb-3">
 			<div class="input-group-prepend">
-				<span class="input-group-text" id="basic-addon1">id</span>
+				<span class="input-group-text" id="basic-addon1">Email</span>
 			</div>
-			<input type="text" class="form-control" placeholder="ID"
+			<input type="text" class="form-control" placeholder="이메일을 입력해 주세요"
 				aria-label="Userid" aria-describedby="basic-addon1">
 		</div>
 		
 		
-		<div class="input-group mb-3">
-			<div class="input-group-prepend">
-				<span class="input-group-text" id="basic-addon1">pw</span>
-			</div>
-			<input type="text" class="form-control" placeholder="Password"
-				aria-label="password" aria-describedby="basic-addon1">
-		</div>
-
-		 <label><input type="checkbox" name="color" value="blue"> 로그인 유지</label>
-		 <div class="submitBtn">
-		 
-		 <button type="button" class="btn btn-secondary" style="width:100%;">로그인</button>
-		 </div>
+	<div class="seachBtn"> 
+	<button type="button" class="btn btn-secondary" style="float:left;  width: 30%; margin-right: 100px;"><a href="pwd.jsp">계정 찾기</a></button>
+		<button type="button" class="btn btn-secondary" style=" width: 30%;"><a href="login.jsp">취소</a></button>
 	
-		<div class="searchInfo">
-		<a href="email.jsp" style="margin:5%; ">계정 찾기</a>
-		<a href="join.jsp" style="margin:5%;">회원 가입</a>
-		</div>
+	</div>
+
+
+
+	
 	</div>
 	<!-- 로그인 폼 -->
 	

@@ -12,6 +12,7 @@
 <title>코딩 커뮤니티 사이트</title>
 </head>
 <body>
+
 	<div class="container">
 			<a href="main.jsp"> <img src="#" alt="dds" /></a>
 		<nav class="navbar navbar-expand-lg navbar-light">
@@ -31,7 +32,7 @@
 					<ul class="nav flex-low ">
 						<button type="button" class="btn btn-primary btn-sm"><a href="login.jsp">로그인</a>
 							</button>
-						<button type="button" class="btn btn-secondary btn-sm">회원가입
+						<button type="button" class="btn btn-secondary btn-sm"><a href="join.jsp">회원가입</a>
 						</button>		
 					</ul>
 					
@@ -64,6 +65,6 @@
 		</div>
 
 
-	
+
 </body>
 </html>
