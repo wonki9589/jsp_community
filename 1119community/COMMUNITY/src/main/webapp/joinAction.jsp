@@ -23,8 +23,12 @@
 <body>
 	 <%
 	 	String userID = null;
+	 
+
+	 	
 		 if(session.getAttribute("userid") != null){
 			 userID = (String) session.getAttribute("userid");
+			
 		 }
 		 if(userID != null){
 				PrintWriter script = response.getWriter();
@@ -57,14 +61,18 @@
 		 		script.println("history.back()");
 		 		script.println("</script>");
 		 	}
+		 	
+		 	// 아이디 세션에 저장후 메인페이지 이동
 		 	else {
 		 		session.setAttribute("userid", user.getUserid());
+		 		
 		 		PrintWriter script = response.getWriter();
 		 		script.println("<script>");
 		 		script.println("location.href = 'main.jsp'");
 		 		script.println("</script>");
 		 	}
 	 	}
+
 	 	
 	 %>
 </body>

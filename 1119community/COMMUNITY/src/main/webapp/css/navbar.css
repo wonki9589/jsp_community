@@ -31,7 +31,12 @@ html, body , #first{
 	 float:left;
 	 background-color:#fff5ee;
 }
-
+h7 {
+	text-align:center;
+	color:black;
+	padding:10px;
+	font-size:20px;
+}
 
 
 .nav felx-low {

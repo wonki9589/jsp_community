@@ -29,27 +29,6 @@ public class UserDAO {
 	 // 여기까지가 접속할수있게 해주는 부분
  }
  
- public int login(String userid , String userPassword) {
-	 String SQL = "SELECT password FROM User WHERE userid = ?";
-	 try {
-		 pstmt =  conn.prepareStatement(SQL);
-		 pstmt.setString(1, userid);
-		 rs = pstmt.executeQuery();
-		 
-		 if ( rs.next()) {
-			 if(rs.getString(1).equals(userPassword)) 
-				 return 1; // 로그인성공
-			 else
-				 return 0; // 비밀번호 불일치
-			 }
-		 
-		 
-		 return -1 ;  // 아이디가없음
-		 }
-	 catch ( Exception e) {
-		 e.printStackTrace();
-	 } return -2 ; // 데이터베이스 종
- }
  
  public int join(User user) {
 	 String SQL = "INSERT INTO User VALUES(?,?,?,?,?,?,?)";
@@ -71,6 +50,28 @@ public class UserDAO {
 		 e.printStackTrace();
 	 } 
 	 return -1 ; // database error
+ }
+ 
+ public int login(String userid , String password) {
+	 String SQL = "SELECT password FROM User WHERE userid = ?";
+	 try {
+		 pstmt =  conn.prepareStatement(SQL);
+		 pstmt.setString(1, userid);
+		 rs = pstmt.executeQuery();
+		 
+		 if ( rs.next()) {
+			 if(rs.getString(1).equals(password)) 
+				 return 1; // 로그인성공
+			 else
+				 return 0; // 비밀번호 불일치
+			 }
+		 
+		 
+		 return -1 ;  // 아이디가없음
+		 }
+	 catch ( Exception e) {
+		 e.printStackTrace();
+	 } return -2 ; // 데이터베이스 종
  }
  
 }

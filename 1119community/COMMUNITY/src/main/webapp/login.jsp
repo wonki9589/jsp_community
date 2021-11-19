@@ -61,6 +61,7 @@
 
 
 	<div class="container1">
+	<form method="post" action="loginAction.jsp">
 	<h3> 로그인</h3>
 	<hr />
 	
@@ -70,7 +71,8 @@
 				<span class="input-group-text" id="basic-addon1">id</span>
 			</div>
 			<input type="text" class="form-control" placeholder="ID"
-				aria-label="Userid" aria-describedby="basic-addon1">
+				aria-label="Userid" aria-describedby="basic-addon1"  name="userid"
+				maxlength="20">
 		</div>
 		
 		
@@ -79,19 +81,21 @@
 				<span class="input-group-text" id="basic-addon1">pw</span>
 			</div>
 			<input type="text" class="form-control" placeholder="Password"
-				aria-label="password" aria-describedby="basic-addon1">
+				aria-label="password" aria-describedby="basic-addon1"  name="password"
+				maxlength="20">
 		</div>
 
 		 <label><input type="checkbox" name="color" value="blue"> 로그인 유지</label>
 		 <div class="submitBtn">
 		 
-		 <button type="button" class="btn btn-secondary" style="width:100%;">로그인</button>
+		 <button type="submit"  class="btn btn-secondary" style="width:100%;">로그인</button>
 		 </div>
 	
 		<div class="searchInfo">
 		<a href="email.jsp" style="margin:5%; ">계정 찾기</a>
 		<a href="join.jsp" style="margin:5%;">회원 가입</a>
 		</div>
+		</form>
 	</div>
 	<!-- 로그인 폼 -->
 	
