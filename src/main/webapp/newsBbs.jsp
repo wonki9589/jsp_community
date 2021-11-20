@@ -144,7 +144,11 @@
 
     
     <div class="container3">
-        <div class="col-lg-12">
+   
+        <div class="col-lg-13">
+        <div class="write-btn" >
+         <button type="button" class="btn btn-outline-secondary" ><a href="write.jsp">글쓰기</a></button>
+        </div>
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive project-list">
@@ -205,7 +209,7 @@
                 </div>
             </div>
         </div>
-  
+  	</div>
     <!-- 이전 / 다음 페이지 버튼 -->
 
 			

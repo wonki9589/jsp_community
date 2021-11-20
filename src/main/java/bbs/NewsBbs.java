@@ -4,7 +4,7 @@ public class NewsBbs {
 		
 	
 	private int post_id;
-	private int  post_number;
+	
 	private String title;
 	private  String content;
 	private  String create_date;
@@ -12,18 +12,17 @@ public class NewsBbs {
 	private int recommend_num;
 	private int USER_ID;
 	private  int Category_id;
+	private int post_available;
+	
+	
+	
 	public int getPost_id() {
 		return post_id;
 	}
 	public void setPost_id(int post_id) {
 		this.post_id = post_id;
 	}
-	public int getPost_number() {
-		return post_number;
-	}
-	public void setPost_number(int post_number) {
-		this.post_number = post_number;
-	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -67,6 +66,12 @@ public class NewsBbs {
 		Category_id = category_id;
 	}
 	
+	public int getPost_available() {
+		return post_available;
+	}
+	public void setPost_available(int post_available) {
+		this.post_available = post_available;
+	}
 	
 	
 	
