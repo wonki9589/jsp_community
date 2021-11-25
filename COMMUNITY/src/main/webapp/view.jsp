@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-  
+<%@ page import= "java.io.PrintWriter" %>
+<%@ page import= "bbs.NewsBbs" %>
+<%@ page import= "bbs.NewsBbsDAO" %>
 
 
 <!DOCTYPE html>
@@ -10,9 +12,10 @@
 <meta name="viewport" content = "width=device-width", initial-scale ="1" >
 <!-- 부트스트랩 4.6  -->
 
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/navbar.css">
-<link rel="stylesheet" href="css/bbs.css">
+<link rel="stylesheet" href="css/bootstrap.css?after">
+<link rel="stylesheet" href="css/navbar.css?after">
+<link rel="stylesheet" href="css/bbs.css?after">
+
 
 <!--  -->
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
@@ -25,6 +28,22 @@
 		userID = (String) session.getAttribute("userid");
 	}
 	//유저아이디 세션값 가져옴 
+	
+	int postID = 0;
+	if(request.getParameter("post_id") != null){		
+		postID = Integer.parseInt(request.getParameter("post_id"));
+	}
+	
+	if(postID == 0){
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('유효하지 않은 글 입니다 .')");
+		script.println("location.href='newsBbs.jsp'");
+		script.println("</script>");
+		
+	}
+	NewsBbs Bbs = new NewsBbsDAO().getBbs(postID);
+	
 	%>
 
 
@@ -116,7 +135,7 @@
 					
 					<ul class="nav flex-column">
 
-						<li class="nav-item"><a class="nav-link active" href="#">NEWS</a>
+						<li class="nav-item"><a class="nav-link active" href="newsBbs.jsp">NEWS</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="#">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">커뮤니티</a></li>
@@ -138,88 +157,58 @@
 			%>
 			
 			<!--  navbar  -->
-			
+
+	<div class="container3">
+	 
+	 <div class="col-lg-12">
+	
+		<form class="was-validated">
 		
-
-
-    
-    <div class="container3">
-   
-        <div class="col-lg-13">
-        <div class="write-btn" >
-         <button type="button" class="btn btn-outline-secondary" ><a href="write.jsp">글쓰기</a></button>
-        </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="table-responsive project-list">
-                        <table class="table project-table table-centered table-nowrap">
-                        <!--  title -->
-                            <thead>
-                                <tr >
-                                    <th scope="col">번 호</th>
-                                    <th scope="col">제 목</th>
-                                    <th scope="col">작 성 자</th>
-                                    <th scope="col">작 성 일</th>
-                                   
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <th scope="row">1</th>
-                                    <td>New admin Design</td>
-                                    <td>02/5/2019</td>
-                                    <td> dsadas</td >  
-                                </tr>
-                                
-                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>New admin Design</td>
-                                    <td>02/5/2019</td>
-                                    <td> dsadas</td >  
-                                </tr>
-                                
-                                 <tr>
-                                    <th scope="row">1</th>
-                                    <td>New admin Design</td>
-                                    <td>02/5/2019</td>
-                                    <td> dsadas</td >  
-                                </tr>
-                
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- table -->
-                    
-                    
-                    
-
-                    <div class="pt-3">
-                        <ul class="pagination justify-content-end mb-0">
-                            <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-  	</div>
-    <!-- 이전 / 다음 페이지 버튼 -->
-
+			<div class="viewComponent">
+				
+				
+				<div class="viewCategory">
+					<label for="exampleFormControlTextarea1" class="form-label">
+						</label>
+						<div class=form-control style="border-color: #28a745; "><%= Bbs.getCategory_id() %></div>
+				   </div>
+				
+				
+				
+				<div class="viewTitle" >
+							<label for="exampleFormControlInput1" class="form-label">
+						</label>
+						<div class=form-control style="border-color: #28a745; "><%= Bbs.getTitle() %></div>
+				</div>
+				
+				
+				
+				<div class="viewContent">
+					<label for="exampleFormControlTextarea1" class="form-label">
+						</label>
+					<div class=form-control style="border-color: #28a745; height:100%; "><%= Bbs.getContent() %></div>
+				</div>
 			
+			
+				<div class="viewBtn">
+					<div class="writeSubmitBtn">
+					<a href="newsBbs.jsp">목록</a>
+				
+			<%
+				if(userID != null && userID.equals(Bbs.getUSER_ID()))  {
+			%>
+					<a href="update.jsp?post_id=<%= postID%>" class="writeSubmitBtn">수정</a>
+					<a href="deleteAction.jsp?post_id=<%= postID%>" class="writeSubmitBtn">삭제</a>
+			<%
+				}
+			%>
+			</div>
+				</div>
+			</div>
+		</form>
 		
-
-</body>
-</html>
-			
-			
-			
-			
-
-			
+		
+		</div>
+	</div>
+	
+	

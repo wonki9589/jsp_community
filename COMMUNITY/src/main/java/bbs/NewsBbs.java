@@ -10,7 +10,7 @@ public class NewsBbs {
 	private  String create_date;
 	private String modified_date;
 	private int recommend_num;
-	private int USER_ID;
+	private String USER_ID;
 	private  int Category_id;
 	private int post_available;
 	
@@ -53,10 +53,10 @@ public class NewsBbs {
 	public void setRecommend_num(int recommend_num) {
 		this.recommend_num = recommend_num;
 	}
-	public int getUSER_ID() {
+	public String getUSER_ID() {
 		return USER_ID;
 	}
-	public void setUSER_ID(int uSER_ID) {
+	public void setUSER_ID(String uSER_ID) {
 		USER_ID = uSER_ID;
 	}
 	public int getCategory_id() {

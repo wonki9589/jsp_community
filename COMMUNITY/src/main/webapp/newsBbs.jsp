@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+ <%@ page import  ="java.io.PrintWriter"%>
+ <%@ page import  ="bbs.NewsBbs"%>
+ <%@ page import  ="bbs.NewsBbsDAO"%>
+ <%@ page import  ="java.util.ArrayList"%>
   
 
 
@@ -25,6 +29,12 @@
 		userID = (String) session.getAttribute("userid");
 	}
 	//유저아이디 세션값 가져옴 
+	int pageNumber = 1;
+	if(request.getParameter("pageNumber") != null){
+		pageNumber =Integer.parseInt(request.getParameter("pageNumber"));
+	}
+	
+	
 	%>
 
 
@@ -116,7 +126,7 @@
 					
 					<ul class="nav flex-column">
 
-						<li class="nav-item"><a class="nav-link active" href="newsBbs.jsp">NEWS</a>
+						<li class="nav-item"><a class="nav-link active" href="#">NEWS</a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="#">Q&A</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">커뮤니티</a></li>
@@ -138,50 +148,90 @@
 			%>
 			
 			<!--  navbar  -->
-
-	<div class="container3">
-	 
-	 <div class="col-lg-12">
-	
-		<form class="was-validated" method="post" action="writeAction.jsp">
+			
 		
-			<div class="mb-3">
+
+
+    
+    <div class="container3">
+   
+        <div class="col-lg-13">
+        <div class="write-btn" >
+         <button type="button" class="btn btn-outline-secondary" ><a href="write.jsp">글쓰기</a></button>
+        </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive project-list">
+                        <table class="table project-table table-centered table-nowrap">
+                        <!--  title -->
+                            <thead>
+                                <tr >
+                                    <th scope="col">번 호</th>
+                                    <th scope="col">제 목</th>
+                                    <th scope="col">작 성 자</th>
+                                    <th scope="col">작 성 일</th>
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <%
+                            
+                             	NewsBbsDAO newsBbsDAO = new NewsBbsDAO();
+                            	ArrayList<NewsBbs> list = newsBbsDAO.getList(pageNumber);
+                            	
+                            	
+                            	for(int i=0; i< list.size(); i++){
+                            		
+                            %>
+
+								<tr>
+									<th scope="row"><%=list.get(i).getPost_id()%></th>
+									<td><a href="view.jsp?post_id=<%=list.get(i).getPost_id()%>"><%=list.get(i).getTitle()%></a></td>
+									<td><%=list.get(i).getUSER_ID()%></td>
+									<td><%=list.get(i).getCreate_date()%></td>
+								</tr>
+								<%
+								}
+								%>
+								<!-- 데이터베이스에서값 추출하는 부분  -->
+                                
+                               
+                
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- table -->
+                    
+                    
+                    
+
+                    <div class="pt-3">
+                        <ul class="pagination justify-content-end mb-0">
+                            <li class="page-item disabled">
+                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item active"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+  	</div>
+    <!-- 이전 / 다음 페이지 버튼 -->
 
 			
-				
-				 <label for="exampleDataList" class="form-label">
-				</label> <input type="text" class="form-control" list="datalistOptions"
-					id="exampleDataList" name="Category_id" placeholder="게시판을 선택해 주세요 ">
-				<datalist id="datalistOptions">
-						<option value="News page">
-						<option value="Q&A page">
-						<option value="Community page">
+		
 
-				</datalist>
-
-				<div class="mb-3">
-							<label for="exampleFormControlInput1" class="form-label">
-						</label>
-						 <input type="text" class="form-control"
-								id="exampleFormControlInput1" name="title" placeholder="제목을 입력해 주세요">
-				</div>
-				<div class="mb-3">
-					<label for="exampleFormControlTextarea1" class="form-label">
-						</label>
-					<textarea class="form-control" id="exampleFormControlTextarea1"
-								rows="8"name="content" placeholder="내용을 입력해 주세요"></textarea>
-				</div>
+</body>
+</html>
+			
+			
+			
 			
 
-			</div>
-			<div class="mb-3">
-				<div class="writeSubmitBtn">
-				<input type="submit" value="등 록" />
-				</div>
-			</div>
-		</form>
-		
-		</div>
-	</div>
-	
-	
+			
